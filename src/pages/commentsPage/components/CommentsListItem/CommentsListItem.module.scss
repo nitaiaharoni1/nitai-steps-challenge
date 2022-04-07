@@ -1,0 +1,30 @@
+@import "src/themes/colors.module";
+
+.root {
+  background-color: $blue;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 1rem;
+  user-select: none;
+
+
+  &:hover {
+    background-color: $darkGray;
+    cursor: pointer;
+    box-shadow: 0 0.3rem 0.3rem 0.3rem rgba(0, 0, 0, 0.3);
+  }
+}
+
+.title {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.textSection {
+  margin: 10px 0;
+  font-size: 1rem;
+}
+
+.subtitle {
+  font-weight: 600;
+}
