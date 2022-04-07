@@ -1,0 +1,82 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:all",
+    "airbnb",
+    "airbnb-typescript",
+    "airbnb/hooks",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
+    "plugin:react/all"
+  ],
+  "overrides": [],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "prefer-arrow-functions"
+  ],
+  "rules": {
+    "react/require-default-props": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/display-name": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-no-literals": "off",
+    "react/jsx-max-depth": "off",
+    "react/function-component-definition": [
+      "error", {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ],
+    "no-empty-pattern": "off",
+    "import/no-cycle": "off",
+    "import/no-default-export": "error",
+    "import/prefer-default-export": "off",
+    "import/order": ["error", {"newlines-between": "always", "alphabetize": {"order": "asc", "caseInsensitive": true}}],
+    "import/no-extraneous-dependencies": "off",
+    "@typescript-eslint/return-await": "off",
+    "@typescript-eslint/no-use-before-define": "off",
+    "@typescript-eslint/lines-between-class-members": ["error", "always", {"exceptAfterSingleLine": true}],
+    "@typescript-eslint/type-annotation-spacing": [
+      "error", {
+        "before": false,
+        "after": true,
+        "overrides": {"arrow": {"before": true, "after": true}}
+      }
+    ],
+    "prefer-arrow-functions/prefer-arrow-functions": "error",
+    "curly": "error",
+    "jsx-quotes": ["error", "prefer-single"],
+    "no-multiple-empty-lines": ["error", {"max": 1, "maxEOF": 1, "maxBOF": 1}],
+    "max-len": ["error", {"code": 150}],
+    "object-curly-newline": "off",
+    "object-property-newline": ["error", {"allowAllPropertiesOnSameLine": false}],
+    "arrow-body-style": ["error", "as-needed"],
+    "class-methods-use-this": "off",
+    "no-return-await": "off",
+    "implicit-arrow-linebreak": "off",
+    "no-console": ["error", {"allow": ["warn", "error"]}],
+    "no-empty": "off"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"],
+        "moduleDirectory": ["node_modules", "src/"]
+      }
+    }
+  }
+}
