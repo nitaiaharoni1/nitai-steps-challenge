@@ -1,28 +1,33 @@
 import { Box, Button, TextField } from '@mui/material';
-import { ChangeEvent, FC, useState } from 'react';
+import { ChangeEvent, FC, useContext, useState } from 'react';
 
 import styles from './CommentsAddComment.module.scss';
 
+import { CommentsContext } from 'context';
 import colors from 'themes/colors.module.scss';
+import { validateEmail } from 'utils/validateEmail';
 
 enum InputsTypes {
-  title = 'title',
+  name = 'name',
   body = 'body',
   email = 'email',
 }
 
 export const CommentsAddComment: FC = () => {
-  const [title, setTitle] = useState('');
+  const { addComment } = useContext(CommentsContext);
+
+  const [name, setName] = useState('');
   const [body, setBody] = useState('');
   const [email, setEmail] = useState('');
 
-  const isSubmitDisabled = !title || !body || !email;
+  const isEmailValid = validateEmail(email);
+  const isSubmitDisabled = !name || !body || !email || !isEmailValid;
 
   const handleInputChanged = (e: ChangeEvent<any>) => {
     const { id, value } = e.target;
     switch (id) {
-      case InputsTypes.title:
-        setTitle(value);
+      case InputsTypes.name:
+        setName(value);
         break;
       case InputsTypes.body:
         setBody(value);
@@ -35,16 +40,19 @@ export const CommentsAddComment: FC = () => {
     }
   };
 
-  const handleClear = (e: any) => {
-    e.preventDefault();
-    setTitle('');
+  const handleClear = () => {
+    setName('');
     setBody('');
     setEmail('');
   };
 
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
-    console.log(title, body, email);
+  const handleSubmit = () => {
+    addComment({
+      name,
+      body,
+      email,
+    });
+    handleClear();
   };
 
   return (
@@ -56,12 +64,12 @@ export const CommentsAddComment: FC = () => {
     >
       <div className={styles.inputs}>
         <TextField
-          id={InputsTypes.title}
-          label='Title'
+          id={InputsTypes.name}
+          label='Name'
           onChange={handleInputChanged}
           required
           sx={{ m: 1 }}
-          value={title}
+          value={name}
         />
 
         <TextField
@@ -79,11 +87,16 @@ export const CommentsAddComment: FC = () => {
         />
 
         <TextField
+          autoComplete='email'
+          error={!isEmailValid && !!email}
           id={InputsTypes.email}
           label='Email'
           onChange={handleInputChanged}
           required
-          sx={{ m: 1 }}
+          sx={{
+            m: 1,
+            width: 300,
+          }}
           value={email}
         />
       </div>

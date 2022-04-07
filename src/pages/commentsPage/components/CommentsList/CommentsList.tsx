@@ -4,8 +4,6 @@ import InfiniteScroll from 'react-infinite-scroller';
 import { CommentsAddComment } from '../CommentsAddComment/CommentsAddComment';
 import { CommentsListItem } from '../CommentsListItem/CommentsListItem';
 
-import styles from './CommentsList.module.scss';
-
 import { Loader } from 'components';
 import { IComment } from 'types';
 
