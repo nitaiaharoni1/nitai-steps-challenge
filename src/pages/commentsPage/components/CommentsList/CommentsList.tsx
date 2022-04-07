@@ -1,17 +1,15 @@
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
 
 import { CommentsAddComment } from '../CommentsAddComment/CommentsAddComment';
 import { CommentsListItem } from '../CommentsListItem/CommentsListItem';
 
 import { LoadMore } from 'components';
-import { IComment } from 'types';
+import { CommentsContext } from 'context';
 
-interface Props {
-  comments: IComment[];
-}
+export const CommentsList: FC = () => {
+  const { comments, isLoading } = useContext(CommentsContext);
 
-export const CommentsList: FC<Props> = ({ comments }) => {
   const handleScroll = () => {
     console.error('scrolled');
   };
@@ -24,9 +22,8 @@ export const CommentsList: FC<Props> = ({ comments }) => {
 
       <InfiniteScroll
         hasMore
-        loader={<LoadMore />}
+        loader={<LoadMore isLoading={isLoading} />}
         loadMore={handleScroll}
-        pageStart={0}
       >
         {first10Comments.map((comment) => (
           <CommentsListItem key={comment.id} comment={comment} />

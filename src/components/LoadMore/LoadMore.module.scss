@@ -7,11 +7,18 @@
 }
 
 .loadMore {
+  justify-content: center;
   background-color: $darkGray;
+  display: flex;
   cursor: pointer;
   border-radius: 0.5rem;
   padding: 1rem;
   user-select: none;
-  width: 7rem;
+  align-items: center;
+  width: 8rem;
   text-align: center;
+}
+
+.circularProgress {
+  margin-left: 0.5rem
 }
