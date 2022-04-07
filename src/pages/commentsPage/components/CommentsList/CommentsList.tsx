@@ -4,7 +4,7 @@ import InfiniteScroll from 'react-infinite-scroller';
 import { CommentsAddComment } from '../CommentsAddComment/CommentsAddComment';
 import { CommentsListItem } from '../CommentsListItem/CommentsListItem';
 
-import { Loader } from 'components';
+import { LoadMore } from 'components';
 import { IComment } from 'types';
 
 interface Props {
@@ -16,7 +16,7 @@ export const CommentsList: FC<Props> = ({ comments }) => {
     console.error('scrolled');
   };
 
-  const first20Comments = comments.slice(0, 20);
+  const first10Comments = comments.slice(0, 10);
 
   return (
     <div>
@@ -24,11 +24,11 @@ export const CommentsList: FC<Props> = ({ comments }) => {
 
       <InfiniteScroll
         hasMore
-        loader={<Loader />}
+        loader={<LoadMore />}
         loadMore={handleScroll}
         pageStart={0}
       >
-        {first20Comments.map((comment) => (
+        {first10Comments.map((comment) => (
           <CommentsListItem key={comment.id} comment={comment} />
         ))}
       </InfiniteScroll>

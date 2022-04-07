@@ -1,0 +1,17 @@
+@import "src/themes/colors.module";
+
+.root {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.loadMore {
+  background-color: $darkGray;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  user-select: none;
+  width: 7rem;
+  text-align: center;
+}
