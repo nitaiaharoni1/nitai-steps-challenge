@@ -10,11 +10,10 @@ export const CommentsPage: FC = () => {
   const { comments } = useContext(CommentsContext);
 
   return (
-    <div>
-
+    <>
       <div className={styles.header}>Comments Page</div>
 
       <CommentsList comments={comments} />
-    </div>
+    </>
   );
 };

@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
 
+import { CommentsAddComment } from '../CommentsAddComment/CommentsAddComment';
 import { CommentsListItem } from '../CommentsListItem/CommentsListItem';
 
 import styles from './CommentsList.module.scss';
@@ -20,7 +21,8 @@ export const CommentsList: FC<Props> = ({ comments }) => {
   const first20Comments = comments.slice(0, 20);
 
   return (
-    <div className={styles.root}>
+    <div>
+      <CommentsAddComment />
 
       <InfiniteScroll
         hasMore

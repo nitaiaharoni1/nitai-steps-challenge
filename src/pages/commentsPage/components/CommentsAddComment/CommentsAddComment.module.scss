@@ -1,0 +1,14 @@
+@import "src/themes/colors.module";
+
+.inputs {
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+}
+
+.filters {
+  margin: 2rem;
+  display: flex;
+  align-items: center;
+}
