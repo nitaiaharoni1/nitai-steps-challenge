@@ -56,70 +56,61 @@ export const CommentsAddComment: FC = () => {
   };
 
   return (
-    <Box
-      autoComplete='off'
-      className={styles.filters}
-      component='form'
-      noValidate
-    >
-      <div className={styles.inputs}>
+    <div className={styles.filtersWrapper}>
+      <div className={styles.inputsWrapper}>
         <TextField
+          className={styles.input}
           id={InputsTypes.name}
           label='Name'
           onChange={handleInputChanged}
           required
-          sx={{ m: 1 }}
           value={name}
         />
 
         <TextField
+          className={styles.input}
           id={InputsTypes.body}
           label='Body'
           maxRows={3}
           multiline
           onChange={handleInputChanged}
           required
-          sx={{
-            m: 1,
-            width: 400,
-          }}
           value={body}
         />
 
         <TextField
           autoComplete='email'
+          className={styles.input}
           error={!isEmailValid && !!email}
           id={InputsTypes.email}
           label='Email'
           onChange={handleInputChanged}
           required
-          sx={{
-            m: 1,
-            width: 300,
-          }}
           value={email}
         />
       </div>
 
-      <Button
-        disabled={isSubmitDisabled}
-        onClick={handleSubmit}
-        variant='contained'
-      >
-        Send
-      </Button>
+      <div className={styles.buttonsWrapper}>
+        <Button
+          disabled={isSubmitDisabled}
+          onClick={handleSubmit}
+          variant='contained'
+        >
+          Send
+        </Button>
 
-      <Button
-        onClick={handleClear}
-        sx={{
-          marginLeft: '1rem',
-          backgroundColor: colors.darkGray,
-        }}
-        variant='contained'
-      >
-        Clear
-      </Button>
-    </Box>
+        <Button
+          onClick={handleClear}
+          sx={{
+            marginLeft: '1rem',
+            backgroundColor: colors.darkGray,
+          }}
+          variant='contained'
+        >
+          Clear
+        </Button>
+      </div>
+    </div>
   );
 };
 
