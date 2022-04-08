@@ -8,24 +8,26 @@ import { LoadMore } from 'components';
 import { CommentsContext } from 'context';
 
 export const CommentsList: FC = () => {
-  const { comments, isLoading } = useContext(CommentsContext);
+  const { comments, isLoading, getComments } = useContext(CommentsContext);
 
-  const handleScroll = () => {
-    console.error('scrolled');
+  const handleScroll = async (page: number) => {
+    debugger;
+    console.log(page - 1);
+    if (!isLoading) {
+      await getComments(page - 1);
+    }
   };
-
-  const first10Comments = comments.slice(0, 10);
 
   return (
     <div>
       <CommentsAddComment />
 
       <InfiniteScroll
-        hasMore
+        hasMore={!isLoading}
         loader={<LoadMore isLoading={isLoading} />}
         loadMore={handleScroll}
       >
-        {first10Comments.map((comment) => (
+        {comments.map((comment) => (
           <CommentsListItem key={comment.id} comment={comment} />
         ))}
       </InfiniteScroll>

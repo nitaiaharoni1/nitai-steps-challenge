@@ -1,4 +1,4 @@
-import { Box, Button, TextField } from '@mui/material';
+import { Button, TextField } from '@mui/material';
 import { ChangeEvent, FC, useContext, useState } from 'react';
 
 import styles from './CommentsAddComment.module.scss';

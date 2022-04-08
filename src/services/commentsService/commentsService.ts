@@ -6,8 +6,13 @@ import { IComment, ICommentPost } from 'types/interfaces';
 
 const { base, comments, stepsBase, testAssignComment } = constants.api;
 
-export const getCommentsReq = async (): Promise<IComment[] | undefined> => {
-  const res = await axios.get(`${base}/${comments}`);
+export const getCommentsReq = async (page: number, limit: number): Promise<IComment[] | undefined> => {
+  const res = await axios.get(`${base}/${comments}`, {
+    params: {
+      _page: page,
+      _limit: limit,
+    },
+  });
   if (!res?.data) return undefined;
   return res?.data;
 };
