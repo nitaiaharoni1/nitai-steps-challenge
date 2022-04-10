@@ -36,7 +36,7 @@ export const CommentsProvider: FC = ({ children }) => {
       setIsLoading(false);
       return;
     }
-    setComments(res);
+    setComments((prevComments) => [...prevComments, ...res]);
     setIsLoading(false);
   };
 

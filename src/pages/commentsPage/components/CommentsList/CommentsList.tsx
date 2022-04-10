@@ -10,22 +10,21 @@ import { CommentsContext } from 'context';
 export const CommentsList: FC = () => {
   const { comments, isLoading, getComments } = useContext(CommentsContext);
 
-  const handleScroll = async (page: number) => {
-    debugger;
-    console.log(page - 1);
-    if (!isLoading) {
-      await getComments(page - 1);
-    }
+  const handleScroll = async () => {
+    if (isLoading) return;
+    const page = comments.length / 20;
+    await getComments(page);
   };
 
   return (
-    <div>
+    <div style={{ height: '80%' }}>
       <CommentsAddComment />
 
       <InfiniteScroll
         hasMore={!isLoading}
         loader={<LoadMore isLoading={isLoading} />}
         loadMore={handleScroll}
+        threshold={0}
       >
         {comments.map((comment) => (
           <CommentsListItem key={comment.id} comment={comment} />
