@@ -17,7 +17,7 @@ export const CommentsList: FC = () => {
   };
 
   return (
-    <div style={{ height: '80%' }}>
+    <div>
       <CommentsAddComment />
 
       <InfiniteScroll
